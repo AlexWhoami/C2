@@ -1,0 +1,40 @@
+<script>
+
+var inn1 = [];
+
+function check(){
+        let inn1 = prompt('Enter your inn');
+        let mas = [...inn1];
+        let sum = mas.reduce((acc, item) => +item + acc, 0);
+          if(mas.length == 10 && sum > 0){
+  
+              return inn1;
+          }
+          else {
+              alert('Enter "xxxxxxxxxx" code, please');
+              check();
+          }
+  }
+  
+  var inn = check();
+  //console.log(typeof inn, inn);
+  if (inn == undefined) {
+      inn = inn1;
+  }
+  var mas = [...inn];
+  var result = [];
+  var coefficient = [-1,5,7,9,4,6,10,5,7,0];
+  mas.forEach((item, index, array) => result[index] = mas[index] * coefficient[index]);
+  var control_sum = (result.reduce((acc, item) => +item + acc, 0)) % 11;
+    if (control_sum == 10){
+      control_sum = 0;
+  }
+  
+    if (mas[mas.length - 1] == control_sum){
+      console.log(`Your inn ${inn} is correct`);
+  }
+    else {
+    console.log(`Your inn ${inn} is wrong`);
+  }
+  
+  </script>
